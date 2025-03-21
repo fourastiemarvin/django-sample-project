@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Keycloak settings
+OAUTH2_PROVIDER = {
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 3600,
+}
+
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
+)
